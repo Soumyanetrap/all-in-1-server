@@ -1,0 +1,62 @@
+{
+    "password": "admin",
+    "table": "trips",
+    "columns": [
+        {
+            "name": "trip_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "trip_name",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "travel_with",
+            "type": "TRV_WITH",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "partner_id",
+            "type": "INTEGER",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "from_dest",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "to_dest",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "dept_date",
+            "type": "TIMESTAMPZ"
+        },
+        {
+            "name": "arv_date",
+            "type": "TIMESTAMPZ"
+        },
+        {
+            "name": "mode",
+            "type": "TRV_MODE"
+        },
+        {
+            "name": "notes",
+            "type": "VARCHAR(300)",
+            "keys": "NOT NULL"
+        }
+    ]
+}

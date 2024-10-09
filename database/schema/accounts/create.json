@@ -1,0 +1,16 @@
+{
+    "password": "admin",
+    "table": "accounts",
+    "columns": [
+        {
+            "name": "account_id",
+            "type": "VARCHAR(15)",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "ifsc",
+            "type": "VARCHAR(15)",
+            "keys": "NOT NULL"
+        }
+    ]
+}

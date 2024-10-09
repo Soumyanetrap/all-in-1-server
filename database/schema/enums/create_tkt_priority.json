@@ -1,0 +1,5 @@
+{
+    "password": "admin",
+    "name": "TKT_PRIORITY",
+    "values": ["Low", "Medium", "High", "Emergency"]
+}

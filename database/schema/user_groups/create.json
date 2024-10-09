@@ -1,0 +1,24 @@
+{
+    "password": "admin",
+    "table": "user_groups",
+    "columns": [
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "keys": "PRIMARY KEY",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "group_id",
+            "type": "INTEGER",
+            "keys": "PRIMARY KEY",
+            "foreign_key": {
+                "table": "groups",
+                "column": "group_id"
+            }
+        }
+    ]
+}

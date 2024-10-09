@@ -1,0 +1,29 @@
+{
+    "password": "admin",
+    "table": "user_connections",
+    "columns": [
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "keys": "PRIMARY KEY",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "friend_id",
+            "type": "INTEGER",
+            "keys": "PRIMARY KEY",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "connection_date",
+            "type": "TIMESTAMPTZ",
+            "keys": ""
+        }
+    ]
+}

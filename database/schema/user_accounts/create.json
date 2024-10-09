@@ -1,0 +1,29 @@
+{
+    "password": "admin",
+    "table": "user_accounts",
+    "columns": [
+        {
+            "name": "uac_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "account_id",
+            "type": "VARCHAR(15)",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "accounts",
+                "column": "account_id"
+            }
+        }
+    ]
+}

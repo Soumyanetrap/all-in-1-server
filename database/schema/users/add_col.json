@@ -1,0 +1,21 @@
+{
+    "password": "admin",
+    "table": "users",
+    "columns": [
+        {
+            "name": "contact",
+            "type": "VARCHAR(10)",
+            "keys": ""
+        },
+        {
+            "name": "address",
+            "type": "VARCHAR(100)",
+            "keys": ""
+        },
+        {
+            "name": "auth_key",
+            "type": "VARCHAR(50)",
+            "keys": "NOT NULL"
+        }
+    ]
+}

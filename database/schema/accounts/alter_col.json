@@ -1,0 +1,12 @@
+{
+    "password": "admin",
+    "table": "accounts",
+    "action": "alter",
+    "columns": [
+        {
+            "name": "balance",
+            "type": "VARCHAR(50) DEFAULT '0.00'",
+            "keys": "NOT NULL"
+        }
+    ]
+}

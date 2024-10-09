@@ -1,0 +1,24 @@
+{
+    "password": "admin",
+    "table": "vaccation_trips",
+    "columns": [
+        {
+            "name": "vaccation_id",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "vaccations",
+                "column": "vaccation_id"
+            }
+        },
+        {
+            "name": "trip_id",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "trips",
+                "column": "trip_id"
+            }
+        }
+    ]
+}

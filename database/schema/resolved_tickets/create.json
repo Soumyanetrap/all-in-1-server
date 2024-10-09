@@ -1,0 +1,59 @@
+{
+    "password": "admin",
+    "table": "resolved_tickets",
+    "columns": [
+        {
+            "name": "ticket_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "subject",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "description",
+            "type": "VARCHAR(500)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "raised_on",
+            "type": "TIMESTAMPTZ",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "resolved_on",
+            "type": "TIMESTAMPTZ",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "raised_by",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "resolver",
+            "type": "INTEGER",
+            "keys": "NOT NULL",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "status",
+            "type": "TKT_STATUS",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "remarks",
+            "type": "VARCHAR(500)",
+            "keys": ""
+        }
+    ]
+}

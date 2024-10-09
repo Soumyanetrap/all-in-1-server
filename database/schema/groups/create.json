@@ -1,0 +1,31 @@
+{
+    "password": "admin",
+    "table": "groups",
+    "columns": [
+        {
+            "name": "group_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "group_name",
+            "type": "VARCHAR(255)",
+            "keys": ""
+        },
+        {
+            "name": "created_on",
+            "type": "TIMESTAMPTZ",
+            "keys": "",
+            "default": "CURRENT_TIMESTAMP"
+        },
+        {
+            "name": "created_by",
+            "type": "INTEGER",
+            "keys": "",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        }
+    ]
+}

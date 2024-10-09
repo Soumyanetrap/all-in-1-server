@@ -1,0 +1,17 @@
+{
+    "password": "admin",
+    "table": "accounts",
+    "action": "add",
+    "columns": [
+        {
+            "name": "bank_name",
+            "type": "VARCHAR(50)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "balance",
+            "type": "NUMERIC(15, 2) DEFAULT 0.00",
+            "keys": "NOT NULL"
+        }
+    ]
+}

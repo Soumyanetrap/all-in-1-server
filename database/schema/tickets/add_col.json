@@ -1,0 +1,12 @@
+{
+    "password":"admin",
+    "table": "tickets",
+    "action": "add",
+    "columns": [
+        {
+            "name": "domain",
+            "type": "TKT_DOMAIN",
+            "keys": "NOT NULL"
+        }
+    ]
+}

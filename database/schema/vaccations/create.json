@@ -1,0 +1,38 @@
+{
+    "password": "admin",
+    "table": "vaccations",
+    "columns": [
+        {
+            "name": "vaccation_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "vaccation_name",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "user_id",
+            "type": "INTEGER",
+            "foreign_key": {
+                "table": "users",
+                "column": "user_id"
+            }
+        },
+        {
+            "name": "travel_with",
+            "type": "TRV_WITH",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "partner_id",
+            "type": "INTEGER",
+            "keys":"NOT NULL"
+        },
+        {
+            "note": "notes",
+            "type": "VARCHAR(200)"
+        }
+    ]
+}

@@ -1,0 +1,46 @@
+{
+    "password": "admin",
+    "table": "users",
+    "columns": [
+        {
+            "name": "user_id",
+            "type": "SERIAL",
+            "keys": "PRIMARY KEY"
+        },
+        {
+            "name": "username",
+            "type": "VARCHAR(50)",
+            "keys": "UNIQUE NOT NULL"
+        },
+        {
+            "name": "name",
+            "type": "VARCHAR(50)",
+            "keys": ""
+        },
+        {
+            "name": "email",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "password",
+            "type": "VARCHAR(100)",
+            "keys": "NOT NULL"
+        },
+        {
+            "name": "contact",
+            "type": "VARCHAR(10)",
+            "keys": ""
+        },
+        {
+            "name": "address",
+            "type": "VARCHAR(100)",
+            "keys": ""
+        },
+        {
+            "name": "auth_key",
+            "type": "VARCHAR(50)",
+            "keys": "NOT NULL"
+        }
+    ]
+}
