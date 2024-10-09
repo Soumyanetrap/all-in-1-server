@@ -42,13 +42,16 @@ const allowedOrigins = [
     'https://your-production-url.com' // Add your production URL here
 ];
 
+
+// CORS Configuration using cors package
 app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
-    credentials: true,
+    origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
+    methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type'], // Allowed headers
+    credentials: true, // Allow credentials (cookies, etc.)
 }));
 
-app.options('*', cors());
+app.options('*', cors()); // Handle preflight requests for all routes
 
 const port = process.env.PORT || 4000;
 
