@@ -44,14 +44,21 @@ const allowedOrigins = [
 
 
 // CORS Configuration using cors package
-app.use(cors({
-    origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
-    methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
-    allowedHeaders: ['Content-Type'], // Allowed headers
-    credentials: true, // Allow credentials (cookies, etc.)
-}));
+// app.use(cors({
+//     origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
+//     methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
+//     allowedHeaders: ['Content-Type'], // Allowed headers
+//     credentials: true, // Allow credentials (cookies, etc.)
+// }));
 
-app.options('*', cors()); // Handle preflight requests for all routes
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  })
+
+// app.options('*', cors()); // Handle preflight requests for all routes
 
 const port = process.env.PORT || 4000;
 
