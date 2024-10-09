@@ -1,6 +1,5 @@
 const express = require('express');
 const WebSocket = require('ws');
-const errorHandler = require('./utils/error_handler');
 const cors = require('cors');
 const { client, connect } = require('./database/db');
 const sendOTP = require('./utils/send_mail');
@@ -131,17 +130,17 @@ async function connectToDatabase() {
 })();
 
 // app.use(cors());
+// CORS Configuration
 const allowedOrigins = [
-    'http://localhost:3000',  // HTTP version
-    'https://localhost:3000', // HTTPS version
-    // Add any other allowed origins here
-  ];
-  
-  app.use(cors({
+    'http://localhost:3000',  // Your React app URL
+    'https://your-production-url.com' // Add your production URL here
+];
+
+app.use(cors({
     origin: allowedOrigins,
-    methods: ['GET', 'POST'],
+    methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
     credentials: true,
-  }));
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
