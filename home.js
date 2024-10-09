@@ -35,6 +35,19 @@ async function processFile() {
 
 const app = express();
 
+// app.use(cors());
+// CORS Configuration
+const allowedOrigins = [
+    'http://localhost:3000',  // Your React app URL
+    'https://your-production-url.com' // Add your production URL here
+];
+
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
+    credentials: true,
+}));
+
 const port = process.env.PORT || 4000;
 
 const MAX_RETRIES = 5;
@@ -129,18 +142,6 @@ async function connectToDatabase() {
     await connectToDatabase();
 })();
 
-// app.use(cors());
-// CORS Configuration
-const allowedOrigins = [
-    'http://localhost:3000',  // Your React app URL
-    'https://your-production-url.com' // Add your production URL here
-];
-
-app.use(cors({
-    origin: allowedOrigins,
-    methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
-    credentials: true,
-}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
