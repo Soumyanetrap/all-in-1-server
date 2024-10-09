@@ -38100,3 +38100,65 @@ table:undefined, constraint:undefined, detail:undefined
 [2024-10-09T07:57:17.914+05:30] Drive Authentication successful
 [2024-10-09T07:57:17.975+05:30] No rows found in attachments for condition: [object Object]
 [2024-10-09T07:57:18.038+05:30] No rows found in attachments for condition: [object Object]
+[2024-10-09T11:24:18.478+05:30] Error: Failed to load routes ReferenceError: fileUpload is not defined
+[2024-10-09T11:24:18.481+05:30] Server is running on port 4000
+[2024-10-09T11:24:19.217+05:30] Success: Connected to PostgreSQL
+[2024-10-09T11:24:19.217+05:30] Database connected successfully.
+[2024-10-09T11:24:19.370+05:30] Listening for notifications...
+[2024-10-09T11:24:31.857+05:30] Error: Failed to load routes ReferenceError: fileUpload is not defined
+[2024-10-09T11:24:31.862+05:30] Server is running on port 4000
+[2024-10-09T11:24:32.506+05:30] Success: Connected to PostgreSQL
+[2024-10-09T11:24:32.507+05:30] Database connected successfully.
+[2024-10-09T11:24:32.660+05:30] Listening for notifications...
+[2024-10-09T11:25:40.625+05:30] Error: Failed to load routes ReferenceError: fileUpload is not defined
+[2024-10-09T11:25:40.627+05:30] Server is running on port 4000
+[2024-10-09T11:25:41.400+05:30] Success: Connected to PostgreSQL
+[2024-10-09T11:25:41.401+05:30] Database connected successfully.
+[2024-10-09T11:25:41.603+05:30] Listening for notifications...
+[2024-10-09T11:38:50.710+05:30] Signin request: Soumyanetra
+[2024-10-09T11:38:50.810+05:30] Row retrieved from users:
+[2024-10-09T11:38:50.940+05:30] Success: Login successful.
+[2024-10-09T11:38:55.662+05:30] Fetch Groups called
+[2024-10-09T11:38:55.664+05:30] Fetch Groups called
+[2024-10-09T11:38:55.666+05:30] Fetch Groups called
+[2024-10-09T11:38:55.900+05:30] No rows found in trips for condition: [object Object]
+[2024-10-09T11:38:56.025+05:30] Retrieval Error: error: invalid input syntax for type integer: "" 
+table:undefined, constraint:undefined, detail:undefined
+[2024-10-09T11:38:56.090+05:30] Retrieval Error: error: invalid input syntax for type integer: "" 
+table:undefined, constraint:undefined, detail:undefined
+[2024-10-09T11:38:56.165+05:30] No rows found in trips for condition: [object Object]
+[2024-10-09T11:38:56.231+05:30] No rows found in trips for condition: [object Object]
+[2024-10-09T11:38:56.294+05:30] Rows retrieved from groups:
+[2024-10-09T11:38:56.371+05:30] Rows retrieved from trips:
+[2024-10-09T11:38:59.968+05:30] Client connected
+[2024-10-09T11:38:59.978+05:30] Fetch Groups called
+[2024-10-09T11:39:00.063+05:30] Fetch Groups called
+[2024-10-09T11:39:00.067+05:30] Fetch Groups called
+[2024-10-09T11:39:00.068+05:30] Client connected
+[2024-10-09T11:39:00.077+05:30] Retrieval Error: error: invalid input syntax for type integer: "" 
+table:undefined, constraint:undefined, detail:undefined
+[2024-10-09T11:39:00.138+05:30] Retrieval Error: error: invalid input syntax for type integer: "" 
+table:undefined, constraint:undefined, detail:undefined
+[2024-10-09T11:39:00.207+05:30] Rows retrieved from trip_messages:
+[2024-10-09T11:39:00.272+05:30] Rows retrieved from groups:
+[2024-10-09T11:39:00.451+05:30] Drive Authentication successful
+[2024-10-09T11:39:00.475+05:30] Drive Authentication successful
+[2024-10-09T11:39:00.805+05:30] Rows retrieved from trip_messages:
+[2024-10-09T11:39:00.869+05:30] No rows found in attachments for condition: [object Object]
+[2024-10-09T11:39:00.935+05:30] No rows found in attachments for condition: [object Object]
+[2024-10-09T11:39:07.186+05:30] WebSocket connection closed
+[2024-10-09T11:39:58.030+05:30] Signin request: Soumyanetra
+[2024-10-09T11:39:58.094+05:30] Row retrieved from users:
+[2024-10-09T11:39:58.172+05:30] Success: Login successful.
+[2024-10-09T11:40:42.223+05:30] Signin request: Soumyanetra
+[2024-10-09T11:40:42.307+05:30] Row retrieved from users:
+[2024-10-09T11:40:42.399+05:30] Success: Login successful.
+[2024-10-09T11:44:19.976+05:30] WebSocket connection closed
+[2024-10-09T11:56:51.666+05:30] Error: Failed to load routes ReferenceError: fileUpload is not defined
+[2024-10-09T11:56:51.674+05:30] Server is running on port 4000
+[2024-10-09T11:56:52.475+05:30] Success: Connected to PostgreSQL
+[2024-10-09T11:56:52.476+05:30] Database connected successfully.
+[2024-10-09T11:56:52.599+05:30] Listening for notifications...
+[2024-10-09T11:58:01.006+05:30] Signin request: Soumyanetra
+[2024-10-09T11:58:01.080+05:30] Row retrieved from users:
+[2024-10-09T11:58:01.182+05:30] Success: Login successful.

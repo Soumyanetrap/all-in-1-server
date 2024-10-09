@@ -1,7 +1,7 @@
 {
   "name": "all-in-1-server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "home.js",
   "scripts": {
     "start": "node home.js",
     "dev": "nodemon home.js",

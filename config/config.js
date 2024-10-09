@@ -23,6 +23,8 @@ const G_DRIVE_PARENT_PATH = process.env.G_DRIVE_PARENT_PATH
 
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD
 
+const NODE_ENV = process.env.NODE_ENV
+
 module.exports = {
     PORT,
     LOCALHOST,
@@ -40,5 +42,6 @@ module.exports = {
     G_DRIVE_PRIVATE_KEY,
     G_DRIVE_PARENT_PATH_TEST,
     G_DRIVE_PARENT_PATH,
-    ADMIN_PASSWORD
+    ADMIN_PASSWORD,
+    NODE_ENV
 };

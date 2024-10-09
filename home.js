@@ -41,7 +41,12 @@ const port = process.env.PORT || 4000;
 const MAX_RETRIES = 5;
 const RETRY_DELAY = 5000; // 5 seconds
 
-const wss = new WebSocket.Server({ port: 8080 });
+const server = app.listen(port, () => {
+    logger.log(`Server is running on port ${port}`);
+});
+
+// const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({server})
 
 const client_trips = new Map();
 
@@ -125,7 +130,18 @@ async function connectToDatabase() {
     await connectToDatabase();
 })();
 
-app.use(cors());
+// app.use(cors());
+const allowedOrigins = [
+    'http://localhost:3000',  // HTTP version
+    'https://localhost:3000', // HTTPS version
+    // Add any other allowed origins here
+  ];
+  
+  app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST'],
+    credentials: true,
+  }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -189,10 +205,6 @@ process.on('unhandledRejection', (reason, promise) => {
 app.use((err, req, res, next) => {
     logger.log(`Unhandled Error: ${err.message}`);
     res.status(err.status || 500).json({ message: err.message || 'Internal Server Error' });
-});
-
-const server = app.listen(port, () => {
-    logger.log(`Server is running on port ${port}`);
 });
 
 server.on('error', (err) => {
