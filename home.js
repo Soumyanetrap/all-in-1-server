@@ -35,18 +35,20 @@ async function processFile() {
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 // CORS Configuration
-// const allowedOrigins = [
-//     'http://localhost:3000',  // Your React app URL
-//     'https://your-production-url.com' // Add your production URL here
-// ];
+const allowedOrigins = [
+    'http://localhost:3000',  // Your React app URL
+    'https://your-production-url.com' // Add your production URL here
+];
 
-// app.use(cors({
-//     origin: allowedOrigins,
-//     methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
-//     credentials: true,
-// }));
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'OPTIONS'], // Include OPTIONS for preflight requests
+    credentials: true,
+}));
+
+app.options('*', cors());
 
 const port = process.env.PORT || 4000;
 
