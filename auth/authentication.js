@@ -13,13 +13,16 @@ const aws = new AWS(client);
 router.post('/signin', async (req, res) => {
     const { username, password } = req.body;
     logger.log(`Signin request: ${username}`);
+    console.log(`Signin request: ${username}`)
     try {
         let result = await aws.getRow('users', { username });
+        console.log("Here")
         if (result && result.length > 0) {
             const user = result[0];
             const isPasswordMatch = await bcrypt.compare(password, user.password);
             if (isPasswordMatch) {
                 logger.log('Success: Login successful.');
+                console.log('Success: Login successful.')
                 const masterKey = Buffer.from(AUTH_MASTER_KEY, 'hex');
                 const email = decrypt(user.email, masterKey, user.auth_key);
 
