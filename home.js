@@ -32,8 +32,14 @@ async function processFile() {
     }
 }
 
-// const wss = new WebSocket.Server({ port: 8080 });
 const app = express();
+
+app.use((req, res, next) => {
+    console.log(`Incoming request: ${req.method} ${req.url}`);
+    console.log(`Request headers: ${JSON.stringify(req.headers)}`);
+    next();
+});
+
 
 const allowedOrigins = [
     'http://localhost:3000',  // Your React app URL
