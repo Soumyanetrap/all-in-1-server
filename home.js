@@ -9,12 +9,12 @@ const authRoutes = require('./auth/authentication'); // Import the authenticatio
 const adminRoutes = require('./admin/db_operations'); // Import the admin routes
 const bankRoutes = require('./banks/bank_operations'); // Import the bank routes
 const ticketRoutes = require('./tickets/ticket_operations'); // Import the ticket routes
-const connRoutes = require('./connections/connections'); // Import the the connection routes
+const connRoutes = require('./connections/connections'); // Import the connection routes
 const storageRoutes = require('./storage/storage'); // Import the storage routes
-const tripRoutes = require('./trip/trip_operations')
+const tripRoutes = require('./trip/trip_operations');
 const chatRoutes = require('./chat/chat_operations'); // Import the chat routes
 
-const { authenticate, uploadFile, readFile } = require('./storage/storage_utils')
+const { authenticate, uploadFile, readFile } = require('./storage/storage_utils');
 
 const fileId = '1qXfVuz0UOVqYXf4kujDis3XgfBFxrgSr';
 
@@ -32,42 +32,31 @@ async function processFile() {
     }
 }
 
-// authenticate().then(uploadFile).catch("error", console.error());
-
+// const wss = new WebSocket.Server({ port: 8080 });
 const app = express();
-
-// app.use(cors());
-// CORS Configuration
-// const allowedOrigins = [
-//     'http://localhost:3000',  // Your React app URL
-//     'https://your-production-url.com' // Add your production URL here
-// ];
-
-
-// // CORS Configuration using cors package
-// app.use(cors({
-//     origin: ['http://localhost:3000','http://localhost:3000/all-in-1'], // Allowed origins
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allowed methods
-//     allowedHeaders: ['Content-Type'], // Allowed headers
-//     // credentials: true, // Allow credentials (cookies, etc.)
-// }));
 
 const allowedOrigins = [
     'http://localhost:3000',  // Your React app URL
     'https://your-production-url.com' // Add your production URL here
 ];
 
-// CORS Configuration using cors package
+// CORS Configuration
 app.use(cors({
-    origin: allowedOrigins, // Use the allowedOrigins array
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Include Authorization if you're using it
-    credentials: true, // Allow credentials (cookies, etc.)
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, origin);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
 }));
 
-// Preflight handling (for OPTIONS requests)
+// Enable preflight across all routes
 app.options('*', cors()); // Enable preflight across all routes
-
 
 const port = process.env.PORT || 4000;
 
@@ -78,8 +67,7 @@ const server = app.listen(port, () => {
     logger.log(`Server is running on port ${port}`);
 });
 
-// const wss = new WebSocket.Server({ port: 8080 });
-const wss = new WebSocket.Server({server})
+const wss = new WebSocket.Server({ server });
 
 const client_trips = new Map();
 
@@ -90,7 +78,7 @@ wss.on('connection', (ws, req) => {
 
     if (tripId) {
         // Store the WebSocket connection with the user ID
-        client_trips.set(ws,tripId);
+        client_trips.set(ws, tripId);
     }
 
     ws.on('message', (message) => {
@@ -131,11 +119,9 @@ async function connectToDatabase() {
                                 }
                             });
                         } else if (msg.channel === 'new_chat') {
-                            // console.log(`New chat message detected: ${msg.payload}`);
-                            // Handle new chat message notifications
                             wss.clients.forEach((client) => {
                                 if (client.readyState === WebSocket.OPEN) {
-                                    const trip_id = client_trips[client]
+                                    const trip_id = client_trips.get(client);
                                     if (msg.payload.trip_id === trip_id)
                                         client.send(JSON.stringify({ type: 'new_chat', message: msg.payload }));
                                 }
@@ -176,27 +162,11 @@ try {
     app.use('/storage', storageRoutes);
     app.use('/trip', tripRoutes);
     app.use('/chat', chatRoutes);
-    app.use(fileUpload({ 
-        limits: { fileSize: 10 * 1024 * 1024 } // Adjust the limit as needed (10 MB here)
-    }));
 } catch (e) {
     logger.log('Error: Failed to load routes', e);
 }
 
-
-
-// // Serve static files from the React app's build directory
-// app.use(express.static(path.join(__dirname,'./build')));
-
-// // The "catchall" handler: for any request that doesn't
-// // match one above, send back the React app's index.html file.
-// app.get('/', (req, res) => {
-//     // res.set('Content-Type', 'text/html');
-//     res.sendFile(path.join(__dirname, './build', 'index.html'));
-//     // res.sendFile(path.join('S:/projects/react_projects/all-in-1/build', 'index.html'));
-
-// });
-// // Define routes
+// Define routes
 app.get('/', async (req, res) => {
     try {
         const responseData = { message: 'home' };
