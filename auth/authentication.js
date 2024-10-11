@@ -18,23 +18,39 @@ router.post('/signin', async (req, res) => {
     try {
         let result = await aws.getRow('users', { username });
         if (result) {
-            result = result[0]
-            const isPasswordMatch = await bcrypt.compare(password, result.password)
+            result = result[0];
+            const isPasswordMatch = await bcrypt.compare(password, result.password);
             if (isPasswordMatch) {
                 logger.log('Success: Login successful.');
-                const masterKey = Buffer.from(AUTH_MASTER_KEY, 'hex')
-                const email = decrypt(result.email,masterKey, result.auth_key)
-                res.json({ message: 'success', user_id: result.user_id, email, auth_key:result.auth_key });
+                const masterKey = Buffer.from(AUTH_MASTER_KEY, 'hex');
+                const email = decrypt(result.email, masterKey, result.auth_key);
+                
+                // Set CORS headers
+                res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000"); // Replace with your allowed origin
+                res.setHeader("Access-Control-Allow-Credentials", "true"); // If needed for cookies
+
+                res.json({ message: 'success', user_id: result.user_id, email, auth_key: result.auth_key });
             } else {
                 logger.log('Failed to verify user.');
+                
+                // Set CORS headers
+                res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+                res.setHeader("Access-Control-Allow-Credentials", "true");
+
                 res.json({ message: 'failed', user_id: null });
             }
         } else {
             logger.log('Failed to verify user.');
+            
+            // Set CORS headers
+            res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+            res.setHeader("Access-Control-Allow-Credentials", "true");
+
             res.json({ message: 'failed', user_id: null });
         }
     } catch (error) {
         logger.log(`Error in POST /signin: ${error.message}`);
+        res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
         res.status(500).send('Failed to sign in');
     }
 });
