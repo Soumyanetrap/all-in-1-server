@@ -4,3 +4,5 @@ node_modules
 
 google_drive_api_cred.json
 .vercel
+
+get_build.bat

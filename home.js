@@ -34,17 +34,17 @@ async function processFile() {
 
 const app = express();
 
-app.use((req, res, next) => {
-    console.log(`Incoming request: ${req.method} ${req.url}`);
-    console.log(`Request headers: ${JSON.stringify(req.headers)}`);
-    next();
-});
+// app.use((req, res, next) => {
+//     console.log(`Incoming request: ${req.method} ${req.url}`);
+//     console.log(`Request headers: ${JSON.stringify(req.headers)}`);
+//     next();
+// });
 
 
-const allowedOrigins = [
-    'http://localhost:3000',  // Your React app URL
-    'https://your-production-url.com' // Add your production URL here
-];
+// const allowedOrigins = [
+//     'http://localhost:3000',  // Your React app URL
+//     'https://your-production-url.com' // Add your production URL here
+// ];
 
 // CORS Configuration
 app.use(cors());
