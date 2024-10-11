@@ -4,6 +4,7 @@ const cors = require('cors');
 const { client, connect } = require('./database/db');
 const sendOTP = require('./utils/send_mail');
 const logger = require('./utils/logger'); // Import the logger
+const path = require('path');
 const authRoutes = require('./auth/authentication'); // Import the authentication routes
 const adminRoutes = require('./admin/db_operations'); // Import the admin routes
 const bankRoutes = require('./banks/bank_operations'); // Import the bank routes
@@ -44,19 +45,19 @@ const allowedOrigins = [
 
 
 // CORS Configuration using cors package
-// app.use(cors({
-//     origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
-//     methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
-//     allowedHeaders: ['Content-Type'], // Allowed headers
-//     credentials: true, // Allow credentials (cookies, etc.)
-// }));
+app.use(cors({
+    origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
+    // methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
+    allowedHeaders: ['Content-Type'], // Allowed headers
+    credentials: true, // Allow credentials (cookies, etc.)
+}));
 
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    next();
-  })
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, OPTIONS");
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//     next();
+//   })
 
 // app.options('*', cors()); // Handle preflight requests for all routes
 
@@ -174,7 +175,20 @@ try {
     logger.log('Error: Failed to load routes', e);
 }
 
-// Define routes
+
+
+// // Serve static files from the React app's build directory
+// app.use(express.static(path.join(__dirname,'./build')));
+
+// // The "catchall" handler: for any request that doesn't
+// // match one above, send back the React app's index.html file.
+// app.get('/', (req, res) => {
+//     // res.set('Content-Type', 'text/html');
+//     res.sendFile(path.join(__dirname, './build', 'index.html'));
+//     // res.sendFile(path.join('S:/projects/react_projects/all-in-1/build', 'index.html'));
+
+// });
+// // Define routes
 app.get('/', async (req, res) => {
     try {
         const responseData = { message: 'home' };
