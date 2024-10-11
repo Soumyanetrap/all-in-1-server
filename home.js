@@ -46,10 +46,10 @@ const allowedOrigins = [
 
 // CORS Configuration using cors package
 app.use(cors({
-    origin: ['http://localhost:3000','http://localhost:3000/all-in-1', 'https://example.com'], // Allowed origins
-    // methods: ['POST', 'GET', 'PUT', 'OPTIONS'], // Allowed methods
+    origin: ['http://localhost:3000','http://localhost:3000/all-in-1'], // Allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allowed methods
     allowedHeaders: ['Content-Type'], // Allowed headers
-    credentials: true, // Allow credentials (cookies, etc.)
+    // credentials: true, // Allow credentials (cookies, etc.)
 }));
 
 // app.use((req, res, next) => {
