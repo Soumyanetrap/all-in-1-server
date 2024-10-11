@@ -191,7 +191,7 @@ class AWS{
         const values = Object.values(condition);
     
         const query = `SELECT * FROM ${table} WHERE ${conditionString}`;
-        // console.log(query);
+        console.log(query);
         try {
             const result = await this.client.query(query, values); // Execute the query with values
             if (result.rows.length === 0) {
