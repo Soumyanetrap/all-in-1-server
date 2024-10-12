@@ -1,10 +1,13 @@
 {
     "version": 2,
     "builds": [
-    {
-        "src": "./home.js",
-        "use": "@vercel/node"
-    }
+        {
+            "src": "./home.js",
+            "use": "@vercel/node",
+            "config": {
+                "maxDuration": 60 
+            }
+        }
     ],
     "routes": [
     {
