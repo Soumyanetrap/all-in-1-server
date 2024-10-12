@@ -202,6 +202,8 @@ class AWS{
             logger.log(`Row retrieved from ${table}:`);
             return result.rows; // Return the first matching row
         } catch (err) {
+            console.log("Error")
+            console.log(err)
             logger.log('Retrieval Error:', err.stack.split('\n')[0], `\ntable:${table}, constraint:${err.constraint}, detail:${err.detail}`);
             return err.detail; // Retrieval failed
         }
