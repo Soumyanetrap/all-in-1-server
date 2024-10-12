@@ -123,6 +123,7 @@ async function connectToDatabase() {
             const connected = await connect();
             if (connected) {
                 logger.log('Database connected successfully.');
+                console.log('Database connected successfully.')
                 try {
                     // Listen to both channels
                     await client.query('LISTEN req_con_changes');
