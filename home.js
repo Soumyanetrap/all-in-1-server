@@ -87,7 +87,18 @@ const server = app.listen(port, () => {
     logger.log(`Server is running on port ${port}`);
 });
 
-const wss = new WebSocket.Server({ server });
+// const http = require('http');
+// const server = http.createServer(app);
+// console.log(server)
+// const wssUrl = `ws://${server.address().address}:${server.address().port}`;
+// console.log(`WebSocket URL: ${wssUrl}`); 
+
+// const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ port: 5000 }); 
+wss.on('error', (error) => {
+    console.error('WebSocket error:', error);
+});
+
 
 const client_trips = new Map();
 
@@ -140,10 +151,14 @@ async function connectToDatabase() {
                                 }
                             });
                         } else if (msg.channel === 'new_chat') {
+                            // console.log(msg)
+                            // console.log(client.readyState)
+                            // console.log(wss.clients)
                             wss.clients.forEach((client) => {
                                 if (client.readyState === WebSocket.OPEN) {
                                     const trip_id = client_trips.get(client);
                                     if (msg.payload.trip_id === trip_id)
+                                        console.log(msg)
                                         client.send(JSON.stringify({ type: 'new_chat', message: msg.payload }));
                                 }
                             });
