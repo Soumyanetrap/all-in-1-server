@@ -194,6 +194,7 @@ class AWS{
         console.log(query);
         try {
             const result = await this.client.query(query, values); // Execute the query with values
+            console.log("result got")
             if (result.rows.length === 0) {
                 logger.log(`No row found in ${table} for condition:`, `email=${condition.email}`);
                 return []; // No row found
