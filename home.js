@@ -89,19 +89,19 @@ app.listen(port, () => {
     logger.log(`Server is running on port ${port}`);
 });
 
-const http = require('http');
+// const http = require('http');
 // const server = http.createServer(app);
 // console.log(server)
 // const wssUrl = `ws://${server.address().address}:${server.address().port}`;
 // console.log(`WebSocket URL: ${wssUrl}`); 
 
 // const wss = new WebSocket.Server({ server });
-// const wss = new WebSocket.Server({ port: 5000 }); 
+const wss = new WebSocket.Server({ port: 5000 }); 
 // Create an HTTP server
-const server = http.createServer(app);
+// const server = http.createServer(app); 
 
 // Create a WebSocket server
-const wss = new WebSocket.Server({ server });
+// const wss = new WebSocket.Server({ server });
 
 wss.on('error', (error) => {
     console.error('WebSocket error:', error);
