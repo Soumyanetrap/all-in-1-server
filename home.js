@@ -35,7 +35,7 @@ const server = app.listen(port, () => {
 });
 
 // Create WebSocket server
-const wss = new WebSocket.Server({ port: 4001 }); // Use a different port for WebSocket
+const wss = new WebSocket.Server({server}); // Use a different port for WebSocket
 
 // Store connections and associated trip IDs
 const client_trips = new Map();
